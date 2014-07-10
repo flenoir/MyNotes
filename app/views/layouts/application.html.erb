@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyNotes</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<header>
+<div id="header-bar">
+<h1>home</h1>
+<h1>search</h1>
+<h1>about</h1>
+</div>
+
+	</header>
+
+<%= yield %>
+
+</body>
+</html>
