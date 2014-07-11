@@ -1,0 +1,14 @@
+
+<%= simple_form_for @note do |f| %>
+<%= f.error_notification %>
+<%= f.input :title, label: "Titre" %>
+<%= f.input :content, label: "Contenu" %>
+
+ <div class ="form-group">
+ <%= f.button :submit %>
+ </div>
+
+<% end %>
+
+
+

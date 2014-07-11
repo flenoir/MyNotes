@@ -7,17 +7,32 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	
+   <div id="wrap">
+     <div class="navbar navbar-default navbar-fixed-top">
+       <div class="container">
+         <div class="navbar-header">
+            home
+		<%= render 'search' %>
+		about
+         </div>
+       </div>
+     </div>
 
-	<header>
-<div id="header-bar">
-<h1>home</h1>
-<h1>search</h1>
-<h1>about</h1>
-</div>
+     <div class="container">
+     	<% if flash[:notice].present? %>
+     	<divclass="alert alert-sucess"><%= flash[:notice]%></div>
+     	<% end %>
 
-	</header>
+     	<% if flash[:alert].present? %>
+     	<divclass="alert alert-warning><%= flash[:alert]%></div>
+     	<% end %>
 
-<%= yield %>
+
+       <%= yield %>
+     </div>
+   </div>
 
 </body>
 </html>
+

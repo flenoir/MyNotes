@@ -1,36 +1,31 @@
+<h1>Listing notes</h1>
 
-
-<%= form_tag(search_path, :method => :get) do %>
-<%= label_tag(:message, "Message ") %>
-<%= text_field_tag(:message) %>
-<%= submit_tag("Search") %>
-<% end %>
-
-<br>
-
-nombre totalde notes <%= @count %>
-<%= link_to "new", new_path %>
+nombre total de notes <%= @count %>
+<%= link_to "new", new_note_path %>
 
 </p>
 
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Titre</th>
+      <th>Contenu</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<tr>
+<tbody>
+
 <% @notes.each do |n| %>
+<tr>
 <td><%= n.id %></td>
-<td><%= n.user %></td>
+<td><%= n.title %></td>
 <td><%= n.content %></td>
 <td><%= link_to "show", note_path(n.id) %></td>
-<td><%= link_to "edit", edit_path(n.id) %></td>
+<td><%= link_to "edit", edit_note_path(n.id) %></td>
 <td><%= link_to "destroy", note_path(n.id), :method => :delete %></td>
-<br>
-<% end %>
 </tr>
-
-
-<br>
-
-<%= @count %>
-
-<br>
-
-
+<% end %>
+</tbody>

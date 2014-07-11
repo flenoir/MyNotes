@@ -8,26 +8,22 @@ MyNotes::Application.routes.draw do
   # http://localhost:3000/?message=Hello
 # params[:message] => "Hello"
   root "notes#index" # appele la methode hello du controlleur notes
+  # get "/notes/search" => "notes#search", :as => "search"
 
+  resources :notes do
+    get "search", on: :collection #:collection si on cherche sur notes, :member si on cherche sur notes/:id
+  end
 
 # http://localhost:3000/notes/1
 # params[:id] => 1
-   get "/notes/search" => "notes#search", :as => "search"
-   get "/notes" => "notes#index", :as =>"notes" #c'est un helper d'url pour pouvoir utiliser notes_path dans la vue
-   get "/notes/new" => "notes#new", :as => "new"
-   post "/notes" => "notes#create"
-   get "/notes/:id/edit" => "notes#edit", :as =>"edit"
-   patch "notes/:id" => "notes#update"
-   get "/notes/:id" => "notes#show", :as =>"note" 
-   delete "/notes/:id" => "notes#destroy"
-  
-
-
    
-
-
-
-
+   # get "/notes" => "notes#index", :as =>"notes" #c'est un helper d'url pour pouvoir utiliser notes_path dans la vue
+   # get "/notes/new" => "notes#new", :as => "new"
+   # post "/notes" => "notes#create"
+   # get "/notes/:id/edit" => "notes#edit", :as =>"edit"
+   # patch "notes/:id" => "notes#update"
+   # get "/notes/:id" => "notes#show", :as =>"note" 
+   # delete "/notes/:id" => "notes#destroy"
 
 
   # Example of regular route:

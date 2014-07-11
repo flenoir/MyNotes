@@ -21,7 +21,8 @@ class NotesController < ApplicationController
 
 	 def search
 	 	@message = params[:message]
-	 	@notes = Note.where(:user => @message)
+	 	# @notes = Note.where(:title => @message)
+	 	@notes = Note.where("title like ? OR content like ?", "%#{@message}%", "%#{@message}%")
 	 	render :index
 	 end
 
@@ -30,13 +31,18 @@ class NotesController < ApplicationController
      end
 
      def create
-     	Note.create(note_params)
+     	@note = Note.create(note_params)
      	# ce qui équivanut a :
      	# @note = Note.new
-     	# @note.user = params[:note][:user]
+     	# @note.title OR :content = params[:note][:title OR :content]
      	# @note.content = params[:note][:content]
      	# @note.save
+     	if @note.save
+     		flash[:notice] = "la note a été créée"
      	redirect_to notes_path
+     	else
+     	render :new
+     	end
      end
 
  	def edit
@@ -45,6 +51,7 @@ class NotesController < ApplicationController
  	end
 
  	def update
+ 		flash[:alert] = "la note a été mise à jour"
  		@note = Note.find(params[:id])
  		@note.update(note_params)
  		redirect_to notes_path
@@ -52,6 +59,6 @@ class NotesController < ApplicationController
 
  	private
      def note_params
-		params.require(:note).permit(:user,:content)
+		params.require(:note).permit(:title,:content)
 	end
 end

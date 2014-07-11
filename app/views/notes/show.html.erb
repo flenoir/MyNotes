@@ -1,4 +1,5 @@
-<%= @note.user %>
+
+<%= @note.title %>
 <%= @note.content %>
-<%= link_to "edit", note_path(@note.id) %>
+<%= link_to "edit", edit_note_path(@note.id) %>
 <%= link_to "back",notes_path %>

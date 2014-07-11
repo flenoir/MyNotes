@@ -28,6 +28,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'awesome_print'
+gem 'simple_form'
+gem 'country_select'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
